@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\LoanController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,5 +35,5 @@ Route::post('login', [LoginController::class, 'login']);
      
 Route::middleware('auth:api')->group( function () 
 {
-    Route::resource('profile', ProfileController::class);   
+   Route::post('/loan-create',[LoanController::class,'createLoan']);  
 });

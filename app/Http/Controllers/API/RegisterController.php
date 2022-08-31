@@ -8,13 +8,11 @@ use App\Models\User;
 use App\Exceptions\Handler;
 class RegisterController extends BaseController
 {
-    /*
-        create API for Registration Page
-    */
     public function register(Request $request)
     {
-        //Validation for Register API.
-
+        /**
+         * validation for register API
+         */
          $validator = Validator::make
             ($request->all(), 
         [
@@ -33,15 +31,14 @@ class RegisterController extends BaseController
         try
         {
             $user = User::create($input);
-
         }
         catch(\Exception $e)
         {
           return $this->sendError('Email or Phone number is already exist .');   
         }
-
-        /*create Token */
-        
+        /**
+         * create token 
+         */
         $success['token'] =  $user->createToken('api_project')->accessToken;
         $success['id']=$user->id;
         $success['email'] =  $user->email;

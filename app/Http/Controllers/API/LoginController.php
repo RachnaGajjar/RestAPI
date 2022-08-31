@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends BaseController
 {
-    //This Function is used to Login
+    /**
+     * This function for Login.
+     */
     public function Login(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
